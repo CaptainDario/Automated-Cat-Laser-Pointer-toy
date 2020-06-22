@@ -4,35 +4,14 @@
 
 AsyncWebServer server(80);
 
-// Set LED GPIO
-const int ledPin = 2;
-// Stores LED state
-String ledState;
 
-
-
-// Replaces placeholder with LED state value
-String processor(const String& var){
-  Serial.println(var);
-  if(var == "STATE"){
-    if(digitalRead(ledPin)){
-      ledState = "Running";
-    }
-    else{
-      ledState = "Idle";
-    }
-
-    return ledState;
-  }
-  return String();
-}
  
 void setup_webserver(){
 
 
   // Route for root / web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/toy_control.html", String(), false, processor);
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
   });
   
   // Route to load style.css file
@@ -40,16 +19,62 @@ void setup_webserver(){
     request->send(SPIFFS, "/style.css", "text/css");
   });
 
-  // Route to set GPIO to HIGH
+  // start rotation
   server.on("/on", HTTP_GET, [](AsyncWebServerRequest *request){
-    digitalWrite(ledPin, HIGH);    
-    request->send(SPIFFS, "/toy_control.html", String(), false, processor);
+    disable_all_movement();
+    rotating = true;
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
+  });
+  // stop rotation
+  server.on("/off", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
+  });
+
+  // move bottom
+  server.on("/move_bottom_left", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    move_bottom_left = true;
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
+  });
+  server.on("/move_bottom_right", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    move_bottom_right = true;
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
+  });
+  // move top
+  server.on("/move_top_left", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    move_top_left = true;
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
+  });
+  server.on("/move_top_right", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    move_top_right = true;
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
   });
   
-  // Route to set GPIO to LOW
-  server.on("/off", HTTP_GET, [](AsyncWebServerRequest *request){
-    digitalWrite(ledPin, LOW);    
-    request->send(SPIFFS, "/toy_control.html", String(), false, processor);
+  // set bottom min/max
+  server.on("/set_bottom_minimum", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    set_bottom_minimum = true;
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
+  });
+  server.on("/set_bottom_maximum", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    set_bottom_maximum = true;
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
+  });
+  // set top min/max
+  server.on("/set_top_minimum", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    set_top_minimum = true;
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
+  });
+  server.on("/set_top_maximum", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    set_top_maximum = true;
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_rotation);
   });
 
   // Start server

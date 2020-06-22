@@ -1,21 +1,42 @@
 #include <AccelStepper.h>
 
+//current state (true -> rotating | false -> not rotating)
+bool rotating = false;
+bool move_bottom_right = false;
+bool move_bottom_left = false;
+bool move_top_right = false;
+bool move_top_left = false;
 
-void random_rotation(AccelStepper stepper_1, int max_1, AccelStepper stepper_2, int max_2){
-  if (stepper_1.distanceToGo() == 0)
-  {
-      // Random change to speed, position and acceleration
-      // Make sure we dont get 0 speed or accelerations
-      delay(100);
-      stepper_1.moveTo(rand() % max_1);
+//set the limits
+bool set_bottom_minimum = false;
+bool set_bottom_maximum = false;
+bool set_top_minimum = false;
+bool set_top_maximum = false;
+
+
+String motor_state;
+
+// Replaces placeholder with LED state val
+String set_rotation(const String& var){
+  Serial.println(var);
+
+  if(var == "STATE"){
+    if(rotating){
+      motor_state = "Running";
+    }
+    else{
+      motor_state = "Idle";
+    }
+
+    return motor_state;
   }
-  stepper_1.run();
-  if (stepper_2.distanceToGo() == 0)
-  {
-      // Random change to speed, position and acceleration
-      // Make sure we dont get 0 speed or accelerations
-      delay(100);
-      stepper_2.moveTo(rand() % max_2);
-  }
-  stepper_2.run();
+  return String();
+}
+
+void disable_all_movement(){
+  rotating = false;
+  move_bottom_right = false;
+  move_bottom_left  = false;
+  move_top_right    = false;
+  move_top_left     = false;
 }

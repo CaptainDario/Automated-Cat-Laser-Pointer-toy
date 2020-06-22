@@ -2,7 +2,7 @@
 <html>
     <link rel="stylesheet" type="text/css" href="style.css">
 <head>
-    <title>ESP32 Web Server</title>
+    <title>Laser pointer cat toy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="data:,">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -12,19 +12,29 @@
     <p>Motor state: <strong> %STATE%</strong></p>
     <table style="width: 100%;">
         <tr>
-            <td>Change state:</td>
+            <td>Random movement:</td>
             <td><a href="/on"><button class="button">ON</button></a></td>
             <td><a href="/off"><button class="button button2">OFF</button></a></td>
         </tr>
         <tr>
-            <td>Move motor:</td>
-            <td><a href="/move left"><button class="button">LEFT</button></a></td>
-            <td><a href="/move right"><button class="button button2">RIGHT</button></a></td>
+            <td>Move motor (bottom):</td>
+            <td><a href="/move_bottom_left"><button class="button">LEFT</button></a></td>
+            <td><a href="/move_bottom_right"><button class="button button2">RIGHT</button></a></td>
         </tr>
         <tr>
-            <td>Set boundaries:</td>
-            <td><a href="/set minimum"><button class="button">MINIMUM</button></a></td>
-            <td><a href="/set maximum"><button class="button button2">MAXIMUM</button></a></td>
+            <td>Set boundaries (bottom):</td>
+            <td><a href="/set_bottom_minimum"><button class="button">MINIMUM</button></a></td>
+            <td><a href="/set_bottom_maximum"><button class="button button2">MAXIMUM</button></a></td>
+        </tr>
+        <tr>
+            <td>Move motor (top):</td>
+            <td><a href="/move_bottom_left"><button class="button">LEFT</button></a></td>
+            <td><a href="/move_bottom_right"><button class="button button2">RIGHT</button></a></td>
+        </tr>
+        <tr>
+            <td>Set boundaries (top):</td>
+            <td><a href="/set_top_minimum"><button class="button">MINIMUM</button></a></td>
+            <td><a href="/set_top_maximum"><button class="button button2">MAXIMUM</button></a></td>
         </tr>
     </table>
 </body>

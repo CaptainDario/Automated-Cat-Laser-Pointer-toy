@@ -16,29 +16,19 @@ String processor(const String& var){
   Serial.println(var);
   if(var == "STATE"){
     if(digitalRead(ledPin)){
-      ledState = "ON";
+      ledState = "Running";
     }
     else{
-      ledState = "OFF";
+      ledState = "Idle";
     }
-    Serial.print(ledState);
+
     return ledState;
   }
   return String();
 }
  
 void setup_webserver(){
-  // Serial port for debugging purposes
-  Serial.begin(115200);
 
-  // Initialize SPIFFS
-  if(!SPIFFS.begin()){
-    Serial.println("An Error has occurred while mounting SPIFFS");
-    return;
-  }
-
-  // Print ESP32 Local IP Address
-  Serial.println(WiFi.localIP());
 
   // Route for root / web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){

@@ -9,8 +9,23 @@
 </head>
 <body>
     <h1>Laser pointer cat toy - Controls</h1>
-    <p>GPIO state: <strong> %STATE%</strong></p>
-    <p><a href="/on"><button class="button">ON</button></a></p>
-    <p><a href="/off"><button class="button button2">OFF</button></a></p>
+    <p>Motor state: <strong> %STATE%</strong></p>
+    <table style="width: 100%;">
+        <tr>
+            <td>Change state:</td>
+            <td><a href="/on"><button class="button">ON</button></a></td>
+            <td><a href="/off"><button class="button button2">OFF</button></a></td>
+        </tr>
+        <tr>
+            <td>Move motor:</td>
+            <td><a href="/move left"><button class="button">LEFT</button></a></td>
+            <td><a href="/move right"><button class="button button2">RIGHT</button></a></td>
+        </tr>
+        <tr>
+            <td>Set boundaries:</td>
+            <td><a href="/set minimum"><button class="button">MINIMUM</button></a></td>
+            <td><a href="/set maximum"><button class="button button2">MAXIMUM</button></a></td>
+        </tr>
+    </table>
 </body>
 </html>

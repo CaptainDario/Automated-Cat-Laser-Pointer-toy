@@ -13,7 +13,7 @@ int stepper_1_max = 1000;
 void setup_motor_1();
 
 //motor top
-AccelStepper stepper_2 = AccelStepper(8, D5, D7, D6, D8);
+AccelStepper stepper_2 = AccelStepper(8, D5, D7, D6, D0);
 int stepper_2_max = 1000;
 int end_point_2 = 1024;
 
@@ -120,7 +120,7 @@ void loop() {
   }
   if (set_top_maximum)
   {
-    stepper_2_max = stepper_1.currentPosition();
+    stepper_2_max = stepper_2.currentPosition();
     set_top_maximum = false;
     Serial.print(stepper_2_max);
   }

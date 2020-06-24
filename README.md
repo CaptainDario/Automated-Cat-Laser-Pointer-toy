@@ -6,7 +6,7 @@ Follow [this instructable](https://www.instructables.com/id/An-Automated-Cat-las
 
 
 ##  To-Do
-* better webserver UI (if you have any ideas please tell me)
+* better webserver UI for setting the movement range (if you have any ideas please tell me)
 * set maximum movement speed
 * enter wifi credentials via webserver
 * add fallback hotspot for controlling the toy outside

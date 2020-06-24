@@ -8,14 +8,14 @@
 
 
 //motor bottom
-AccelStepper stepper_1 = AccelStepper(8, D1, D3, D2, D4);
-int stepper_1_max = 1000;
-void setup_motor_1();
+AccelStepper stepper_bottom = AccelStepper(8, D1, D3, D2, D4);
+int stepper_bottom_max = 1000;
+void setup_motor_bottom();
 
 //motor top
-AccelStepper stepper_2 = AccelStepper(8, D5, D7, D6, D0);
-int stepper_2_max = 1000;
-int end_point_2 = 1024;
+AccelStepper stepper_top = AccelStepper(8, D5, D7, D6, D0);
+int stepper_top_max = 1000;
+void setup_motor_top();
 
 
 
@@ -49,87 +49,91 @@ void setup() {
   setup_webserver();
 
   //set up stepper motors 
-  setup_motor_1();
-  //init stepper 2
-  stepper_2.setMaxSpeed(20000);
-  stepper_2.setAcceleration(1000);
-  stepper_2.setSpeed(20000);
-  stepper_2.moveTo(end_point_2);
+  setup_motor_bottom();
+  setup_motor_top();
 
   Serial.print("Setup finished");
 }
 
 void loop() {
   if(rotating){
-    if (stepper_1.distanceToGo() == 0)
+    if (stepper_bottom.distanceToGo() == 0)
     {
         // Random change to speed, position and acceleration
         // Make sure we dont get 0 speed or accelerations
         delay(50);
-        stepper_1.moveTo(random(0, stepper_1_max));
+        stepper_bottom.moveTo(random(0, stepper_bottom_max));
     }
-    stepper_1.run();
-    if (stepper_2.distanceToGo() == 0)
+    stepper_bottom.run();
+    if (stepper_top.distanceToGo() == 0)
     {
         // Random change to speed, position and acceleration
         // Make sure we dont get 0 speed or accelerations
         delay(50);
-        stepper_2.moveTo(random(0, stepper_2_max));
+        stepper_top.moveTo(random(0, stepper_top_max));
     }
-    stepper_2.run();
+    stepper_top.run();
   }  
 
   //slow movment for configuration 
   //bottom
   if(move_bottom_left){
-    stepper_1.moveTo(stepper_1.currentPosition() + 1);
-    stepper_1.run();
+    stepper_bottom.moveTo(stepper_bottom.currentPosition() + 1);
+    stepper_bottom.run();
   }
   if(move_bottom_right){
-    stepper_1.moveTo(stepper_1.currentPosition() - 1);
-    stepper_1.run();
+    stepper_bottom.moveTo(stepper_bottom.currentPosition() - 1);
+    stepper_bottom.run();
   }
   //top
   if(move_top_right){
-    stepper_2.moveTo(stepper_2.currentPosition() + 1);
-    stepper_2.run();
+    stepper_top.moveTo(stepper_top.currentPosition() + 1);
+    stepper_top.run();
   }
   if(move_top_left){
-    stepper_2.moveTo(stepper_2.currentPosition() - 1);
-    stepper_2.run();
+    stepper_top.moveTo(stepper_top.currentPosition() - 1);
+    stepper_top.run();
   }
 
   //set limits
   if (set_bottom_minimum)
   {
-    stepper_1.setCurrentPosition(0);
+    stepper_bottom.setCurrentPosition(0);
     set_bottom_minimum = false;
-    Serial.print(stepper_1.currentPosition());
+    Serial.print(stepper_top.currentPosition());
   }
   if (set_bottom_maximum)
   {
-    stepper_1_max = stepper_1.currentPosition();
+    stepper_bottom_max = stepper_bottom.currentPosition();
     set_bottom_maximum = false;
-    Serial.print(stepper_1_max);
+    Serial.print(stepper_bottom_max);
   }
   if (set_top_minimum)
   {
-    stepper_2.setCurrentPosition(0);
+    stepper_top.setCurrentPosition(0);
     set_top_minimum = false;
-    Serial.print(stepper_2.currentPosition());
+    Serial.print(stepper_top.currentPosition());
   }
   if (set_top_maximum)
   {
-    stepper_2_max = stepper_2.currentPosition();
+    stepper_top_max = stepper_top.currentPosition();
     set_top_maximum = false;
-    Serial.print(stepper_2_max);
+    Serial.print(stepper_top_max);
   }
   
 }
 
-void setup_motor_1(){
-  //init stepper 1
-  stepper_1.setMaxSpeed(2000);
-  stepper_1.setAcceleration(2000);
-  stepper_1.setSpeed(2000);
+void setup_motor_bottom(){
+  //init stepper 1 (bottom)
+  stepper_bottom.setMaxSpeed(2000);
+  stepper_bottom.setAcceleration(2000);
+  stepper_bottom.setSpeed(2000);
+}
+
+void setup_motor_top(){
+  //init stepper 2 (top/laser pointer)
+  stepper_top.setMaxSpeed(2000);
+  stepper_top.setAcceleration(2000);
+  stepper_top.setSpeed(2000);
+
 }

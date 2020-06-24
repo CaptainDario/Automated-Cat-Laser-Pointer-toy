@@ -18,7 +18,7 @@ String motor_state;
 
 // Replaces placeholder with LED state val
 String set_rotation(const String& var){
-  Serial.println(var);
+  //Serial.println(var);
 
   if(var == "STATE"){
     if(rotating){

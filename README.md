@@ -2,6 +2,7 @@ Automated cat-Laser-Pointer toy
 
 I made this for the 2020 "Pets Speed Challenge" on instructables.
 Follow [this instructable](https://www.instructables.com/id/An-Automated-Cat-laser-pointer-toy/) to learn how to use this project.
+Or see it in action by clicking on the image below.
 [![See it in action](https://img.youtube.com/vi/vp5igMt3IM0/0.jpg)](https://www.youtube.com/watch?v=vp5igMt3IM0)
 
 

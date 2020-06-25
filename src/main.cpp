@@ -10,19 +10,6 @@
 void set_limits();
 void configuration();
 
-//motor bottom
-AccelStepper stepper_bottom = AccelStepper(8, D1, D3, D2, D4);
-int stepper_bottom_max = 1000;
-void setup_motor_bottom();
-int min_delay_before_new_pos_bottom = 50;
-
-//motor top
-AccelStepper stepper_top = AccelStepper(8, D5, D7, D6, D0);
-int stepper_top_max = 1000;
-void setup_motor_top();
-int min_delay_before_new_pos_top = 50;
-
-
 
 void setup() {
   Serial.begin(460800);
@@ -65,6 +52,9 @@ void setup() {
 }
 
 void loop() {
+  //check if motors need to be enabled
+  enable_motor_for_movement();
+
   if(rotating){
     if (stepper_bottom.distanceToGo() == 0)
     {
@@ -76,8 +66,8 @@ void loop() {
         else
           rnd = random(stepper_bottom_max, 0);
 
-        Serial.println(rnd);
-        stepper_top.moveTo(rnd);
+        Serial.print("bottom: "); Serial.println(rnd);
+        stepper_bottom.moveTo(rnd);
     }
     stepper_bottom.run();
 
@@ -91,7 +81,7 @@ void loop() {
         else
           rnd = random(stepper_top_max, 0);
 
-        Serial.println(rnd);
+        Serial.print("top: "); Serial.println(rnd);
         stepper_top.moveTo(rnd);
     }
     stepper_top.run();

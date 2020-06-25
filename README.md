@@ -21,6 +21,7 @@ Or see it in action by clicking on the image below. <br>
 * add model for the base case
 * toggle laser pointer via webserver
 * show the current bounds
+* save the current bounds (in case of power outage etc.)
 * [maybe] adding a timed mode where the duration until it automatically shutsdown can be set
 * [maybe] adding the ability to schedule the activation (than timed mode would be neccessary too)
 * If you have more ideas please let me know :)

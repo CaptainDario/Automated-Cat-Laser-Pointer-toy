@@ -7,6 +7,7 @@ Or see it in action by clicking on the image below. <br>
 
 
 ##  To-Do
+* stop overheating
 * better webserver UI for setting the movement range (if you have any ideas please tell me)
 * set maximum movement speed
 * enter wifi credentials via webserver

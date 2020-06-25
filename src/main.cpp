@@ -26,7 +26,11 @@ int min_delay_before_new_pos_top = 50;
 
 void setup() {
   Serial.begin(460800);
-  
+
+  //randomize values
+  pinMode(A0, INPUT);
+  randomSeed(analogRead(A0));
+
   //set up wifi
   WiFi.begin(SSID, PWD);
   Serial.print("Connecting to "); Serial.print(SSID);

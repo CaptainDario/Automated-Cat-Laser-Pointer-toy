@@ -18,6 +18,7 @@ Or see it in action by clicking on the image below. <br>
 * enter wifi credentials via webserver
 * add fallback hotspot for controlling the toy outside
 * add model for the base case
-* [maybe] adding a timed mode where the duration can be set
-* [maybe] adding the ability to schedule the activation (than timed mode is neccessary too)
+* toggle laser pointer via webserver
+* [maybe] adding a timed mode where the duration until it automatically shutsdown can be set
+* [maybe] adding the ability to schedule the activation (than timed mode would be neccessary too)
 * If you have more ideas please let me know :)

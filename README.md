@@ -11,14 +11,16 @@ Or see it in action by clicking on the image below. <br>
 * Motors tend to overheat during extend usage. Since this is a cat toy, stop it if not in use to prevent it from overheating.
 
 
-##  To-Do
+##  To-Do (in no particular order)
 * ~stop overheating~ [only for idle solved, long operations need hardware fix]
-* better webserver UI for setting the movement range (if you have any ideas please tell me)
+* better webserver UI for setting the movement range (if you have any ideas please tell me):
+  * split configuration in seperate side?
 * set maximum movement speed
 * enter wifi credentials via webserver
 * add fallback hotspot for controlling the toy outside
 * add model for the base case
 * toggle laser pointer via webserver
+* show the current bounds
 * [maybe] adding a timed mode where the duration until it automatically shutsdown can be set
 * [maybe] adding the ability to schedule the activation (than timed mode would be neccessary too)
 * If you have more ideas please let me know :)

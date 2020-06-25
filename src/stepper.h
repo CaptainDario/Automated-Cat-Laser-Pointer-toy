@@ -28,25 +28,33 @@ bool set_top_minimum = false;
 bool set_top_maximum = false;
 
 
-String motor_state;
+String current_state = String();
 
 
 /*
 Set the string on the webserver which indicates indicates the current state.
 */
-String set_rotation(const String& var){
+String set_state(const String& var){
+
+  current_state = String();
 
   if(var == "STATE"){
     if(rotating){
-      motor_state = "Running";
+      current_state = "Running";
+    }
+    else if(move_bottom_left || move_bottom_right ||
+          set_bottom_minimum || set_bottom_maximum){
+      current_state = "callibrating bottom";
+    }
+    else if(move_top_left || move_top_right ||
+          set_top_minimum || set_top_maximum){
+      current_state = "callibrating top";
     }
     else{
-      motor_state = "Idle";
+      current_state = "Idle";
     }
-
-    return motor_state;
   }
-  return String();
+  return current_state;
 }
 
 /*

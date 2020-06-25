@@ -6,16 +6,21 @@
 #include <credentials.h>
 
 
+//function pre defines
+void set_limits();
+void configuration();
 
 //motor bottom
 AccelStepper stepper_bottom = AccelStepper(8, D1, D3, D2, D4);
 int stepper_bottom_max = 1000;
 void setup_motor_bottom();
+int min_delay_before_new_pos_bottom = 50;
 
 //motor top
 AccelStepper stepper_top = AccelStepper(8, D5, D7, D6, D0);
 int stepper_top_max = 1000;
 void setup_motor_top();
+int min_delay_before_new_pos_top = 50;
 
 
 
@@ -24,8 +29,8 @@ void setup() {
   
   //set up wifi
   WiFi.begin(SSID, PWD);
-  Serial.print("Connecting to ");
-  Serial.print(SSID); Serial.println(" ...");
+  Serial.print("Connecting to "); Serial.print(SSID);
+  Serial.println(" ...");
 
   int i = 0;
   while (WiFi.status() != WL_CONNECTED) { // Wait for the Wi-Fi to connect
@@ -59,23 +64,58 @@ void loop() {
   if(rotating){
     if (stepper_bottom.distanceToGo() == 0)
     {
-        // Random change to speed, position and acceleration
-        // Make sure we dont get 0 speed or accelerations
-        delay(50);
-        stepper_bottom.moveTo(random(0, stepper_bottom_max));
+        delay(min_delay_before_new_pos_bottom);
+        // set a random position
+        int rnd;
+        if(stepper_bottom_max > 0)
+          rnd = random(0, stepper_bottom_max);
+        else
+          rnd = random(stepper_bottom_max, 0);
+
+        Serial.println(rnd);
+        stepper_top.moveTo(rnd);
     }
     stepper_bottom.run();
+
     if (stepper_top.distanceToGo() == 0)
     {
-        // Random change to speed, position and acceleration
-        // Make sure we dont get 0 speed or accelerations
-        delay(50);
-        stepper_top.moveTo(random(0, stepper_top_max));
+        delay(min_delay_before_new_pos_top);
+        // set a random position
+        int rnd;
+        if(stepper_top_max > 0)
+          rnd = random(0, stepper_top_max);
+        else
+          rnd = random(stepper_top_max, 0);
+
+        Serial.println(rnd);
+        stepper_top.moveTo(rnd);
     }
     stepper_top.run();
   }  
 
-  //slow movment for configuration 
+  set_limits();
+  configuration();
+  
+}
+
+void setup_motor_bottom(){
+  //init stepper 1 (bottom)
+  stepper_bottom.setMaxSpeed(2000);
+  stepper_bottom.setAcceleration(2000);
+  stepper_bottom.setSpeed(2000);
+}
+
+void setup_motor_top(){
+  //init stepper 2 (top/laser pointer)
+  stepper_top.setMaxSpeed(2000);
+  stepper_top.setAcceleration(2000);
+  stepper_top.setSpeed(2000);
+
+}
+
+
+
+void configuration(){
   //bottom
   if(move_bottom_left){
     stepper_bottom.moveTo(stepper_bottom.currentPosition() + 5);
@@ -94,8 +134,9 @@ void loop() {
     stepper_top.moveTo(stepper_top.currentPosition() - 5);
     stepper_top.run();
   }
+}
 
-  //set limits
+void set_limits(){
   if (set_bottom_minimum)
   {
     stepper_bottom.setCurrentPosition(0);
@@ -120,20 +161,4 @@ void loop() {
     set_top_maximum = false;
     Serial.print(stepper_top_max);
   }
-  
-}
-
-void setup_motor_bottom(){
-  //init stepper 1 (bottom)
-  stepper_bottom.setMaxSpeed(2000);
-  stepper_bottom.setAcceleration(2000);
-  stepper_bottom.setSpeed(2000);
-}
-
-void setup_motor_top(){
-  //init stepper 2 (top/laser pointer)
-  stepper_top.setMaxSpeed(2000);
-  stepper_top.setAcceleration(2000);
-  stepper_top.setSpeed(2000);
-
 }

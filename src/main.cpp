@@ -66,8 +66,8 @@ void loop() {
         else
           rnd = random(stepper_bottom_max, 0);
 
-        Serial.print("bottom: %d"); Serial.println(rnd);
-        stepper_top.moveTo(rnd);
+        Serial.print("bottom: "); Serial.println(rnd);
+        stepper_bottom.moveTo(rnd);
     }
     stepper_bottom.run();
 
@@ -81,7 +81,7 @@ void loop() {
         else
           rnd = random(stepper_top_max, 0);
 
-        Serial.print("top: %d"); Serial.println(rnd);
+        Serial.print("top: "); Serial.println(rnd);
         stepper_top.moveTo(rnd);
     }
     stepper_top.run();

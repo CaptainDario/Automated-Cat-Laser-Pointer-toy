@@ -78,20 +78,20 @@ void loop() {
   //slow movment for configuration 
   //bottom
   if(move_bottom_left){
-    stepper_bottom.moveTo(stepper_bottom.currentPosition() + 3);
+    stepper_bottom.moveTo(stepper_bottom.currentPosition() + 5);
     stepper_bottom.run();
   }
   if(move_bottom_right){
-    stepper_bottom.moveTo(stepper_bottom.currentPosition() - 3);
+    stepper_bottom.moveTo(stepper_bottom.currentPosition() - 5);
     stepper_bottom.run();
   }
   //top
   if(move_top_right){
-    stepper_top.moveTo(stepper_top.currentPosition() + 3);
+    stepper_top.moveTo(stepper_top.currentPosition() + 5);
     stepper_top.run();
   }
   if(move_top_left){
-    stepper_top.moveTo(stepper_top.currentPosition() - 3);
+    stepper_top.moveTo(stepper_top.currentPosition() - 5);
     stepper_top.run();
   }
 

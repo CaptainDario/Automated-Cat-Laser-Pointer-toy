@@ -16,9 +16,8 @@ bool set_top_maximum = false;
 
 String motor_state;
 
-// Replaces placeholder with LED state val
+// Replaces placeholder with toy-state val
 String set_rotation(const String& var){
-  //Serial.println(var);
 
   if(var == "STATE"){
     if(rotating){

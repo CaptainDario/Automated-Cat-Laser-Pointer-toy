@@ -14,5 +14,5 @@ Download the current release from [here](https://github.com/CaptainDario/Automat
 
 
 ## Project Ideas and next steps
-You can take a look at the planned tasks [here]().
+You can take a look at the planned tasks [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/projects/1).
 If you have ideas for new features or improvments feel free to open a request.

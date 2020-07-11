@@ -13,22 +13,6 @@ Download the current release from [here](https://github.com/CaptainDario/Automat
 * Motors tend to overheat during extend usage. Since this is a cat toy, stop it if not in use to prevent it from overheating.
 
 
-##  To-Do (in no particular order)
-* ~stop overheating~ [only for idle solved, long operations need hardware fix]
-* better webserver UI for setting the movement range (if you have any ideas please tell me):
-  * split configuration in seperate tab/site?
-* set maximum movement speed
-* enter wifi credentials via webserver
-* add fallback hotspot for controlling the toy outside
-* add model for the base case
-* show the current bounds (move the motors along the bounds)
-* save the current bounds (in case of power outage etc.)
-* [maybe] adding a timed mode where the duration until it automatically shutsdown can be set
-* [maybe] adding the ability to schedule the activation (than timed mode would be neccessary too)
-* If you have more ideas please let me know :)
-
-
-## Currently implementing:
-* toggle laser pointer via webserver
-* Add connection diagrams on github
-
+## Project Ideas and next steps
+You can take a look at the planned tasks [here]().
+If you have ideas for new features or improvments feel free to open a request.

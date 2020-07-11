@@ -16,7 +16,7 @@ Download the current release from [here](https://github.com/CaptainDario/Automat
 ##  To-Do (in no particular order)
 * ~stop overheating~ [only for idle solved, long operations need hardware fix]
 * better webserver UI for setting the movement range (if you have any ideas please tell me):
-  * split configuration in seperate side?
+  * split configuration in seperate tab/site?
 * set maximum movement speed
 * enter wifi credentials via webserver
 * add fallback hotspot for controlling the toy outside

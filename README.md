@@ -21,9 +21,14 @@ Download the current release from [here](https://github.com/CaptainDario/Automat
 * enter wifi credentials via webserver
 * add fallback hotspot for controlling the toy outside
 * add model for the base case
-* toggle laser pointer via webserver
 * show the current bounds (move the motors along the bounds)
 * save the current bounds (in case of power outage etc.)
 * [maybe] adding a timed mode where the duration until it automatically shutsdown can be set
 * [maybe] adding the ability to schedule the activation (than timed mode would be neccessary too)
 * If you have more ideas please let me know :)
+
+
+## Currently implementing:
+* toggle laser pointer via webserver
+* Add connection diagrams on github
+

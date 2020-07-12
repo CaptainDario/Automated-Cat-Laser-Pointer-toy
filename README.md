@@ -5,23 +5,14 @@ Follow [this instructable](https://www.instructables.com/id/An-Automated-Cat-las
 Or see it in action by clicking on the image below. <br>
 [![See it in action](https://img.youtube.com/vi/vp5igMt3IM0/0.jpg)](https://www.youtube.com/watch?v=vp5igMt3IM0)
 
+Download the current release from [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/releases).
+
 
 ## Caution
 * NEVER rotate the motors by hand! You can and most probably will damage them.
 * Motors tend to overheat during extend usage. Since this is a cat toy, stop it if not in use to prevent it from overheating.
 
 
-##  To-Do (in no particular order)
-* ~stop overheating~ [only for idle solved, long operations need hardware fix]
-* better webserver UI for setting the movement range (if you have any ideas please tell me):
-  * split configuration in seperate side?
-* set maximum movement speed
-* enter wifi credentials via webserver
-* add fallback hotspot for controlling the toy outside
-* add model for the base case
-* toggle laser pointer via webserver
-* show the current bounds
-* save the current bounds (in case of power outage etc.)
-* [maybe] adding a timed mode where the duration until it automatically shutsdown can be set
-* [maybe] adding the ability to schedule the activation (than timed mode would be neccessary too)
-* If you have more ideas please let me know :)
+## Project Ideas and next steps
+You can take a look at the planned tasks [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/projects/1).
+If you have ideas for new features or improvments feel free to open a request.

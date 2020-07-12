@@ -87,6 +87,19 @@ void setup_webserver(){
     request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
   });
 
+  //LASERPOINTER ON/OFF
+  //ON
+  server.on("/laser_on", HTTP_GET, [](AsyncWebServerRequest *request){
+    digitalWrite(LASER_PIN, HIGH);
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
+  });
+  //OFF
+  server.on("/laser_off", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    digitalWrite(LASER_PIN, LOW);
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
+  });
+
   // Start server
   server.begin();
 }

@@ -14,6 +14,10 @@ void configuration();
 void setup() {
   Serial.begin(460800);
 
+  //disable laser at boot
+  pinMode(D8, OUTPUT);
+  digitalWrite(D8, LOW);
+
   //randomize values
   pinMode(A0, INPUT);
   randomSeed(analogRead(A0));

@@ -1,14 +1,16 @@
 #include <AccelStepper.h>
-
+#include <pin.h>
 
 //motor bottom
-AccelStepper stepper_bottom = AccelStepper(8, D1, D3, D2, D4);
+AccelStepper stepper_bottom = AccelStepper(8, stepper_bottom_pin_1, stepper_bottom_pin_2,
+                                              stepper_bottom_pin_3, stepper_bottom_pin_4);
 int stepper_bottom_max = 1000;
 void setup_motor_bottom();
 int min_delay_before_new_pos_bottom = 50;
 
 //motor top
-AccelStepper stepper_top = AccelStepper(8, D5, D7, D6, D0);
+AccelStepper stepper_top = AccelStepper(8, stepper_top_pin_1, stepper_top_pin_2, 
+                                            stepper_top_pin_3, stepper_top_pin_4);
 int stepper_top_max = 1000;
 void setup_motor_top();
 int min_delay_before_new_pos_top = 50;

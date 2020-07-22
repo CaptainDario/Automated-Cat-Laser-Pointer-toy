@@ -14,6 +14,9 @@ Get the latest release from [here](https://github.com/CaptainDario/Automated-Cat
 *note:*
 *I hope to provide a ready made image in the future where you can enter the credentials per webserver.*
 
+But for now you have to do the following:You need to rename the file “REMOVE_credentials.h” in the “src” folder to “credentials.h”. And replace “YOUR SSID” and “YOUR PWD” in this file with your wifi SSID and password.
+After completing this first step you have to upload the file system to the esp and than compile and upload the software.
+
 ## Hardware
 You need following hardware for this project:
 

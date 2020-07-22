@@ -28,6 +28,7 @@ First you need to print the mounts for the motors. To do this print
 A little bit harder will be the making of the base case. I made the case out of wood to provide more structural rigidity (and I think it looks nicer too). The base case has one large hole on the top and a small one on the side. The large hole is for the stepper motor and the small one for the power input. Make sure that the motor-hole is large enough to fit the cables of two stepper motors and also the two wires of the laser pointer (they need space to move freely as the wires will move due to the rotation).
 
 Now connect the components as shown in this image:
+
 ![circuit.png](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/blob/master/instructions/wiring/circuit.png)
 
 Now it is time to assemble it. First put the laser pointer in the mount and use the M4x10 screw and nut to fix it in place.

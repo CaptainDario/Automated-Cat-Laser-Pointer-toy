@@ -7,6 +7,13 @@ See it in action by clicking on the image below. <br>
 Download the current release from [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/releases).
 
 ## Instructions
+
+## Software
+Currently you have to build the firmware from source. This is necessary because you have to enter you wifi credentials.
+Get the latest release from [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/releases/tag/v1.0). Compile it and falsh it to your D1 mini.
+*note:*
+*I hope to provide a ready made image in the future where you can enter the credentials per webserver.*
+
 ## Hardware
 You need following hardware for this project:
 
@@ -43,7 +50,6 @@ Finally put the motors in their holes and also stick them together. If they do n
 * NEVER rotate the motors by hand! You can and most probably will damage them.
 * Motors tend to overheat during extend usage. Since this is a cat toy, stop it if it is not in use to prevent it from overheating.
 
-## Software
 
 
 

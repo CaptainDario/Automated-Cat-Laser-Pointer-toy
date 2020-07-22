@@ -10,7 +10,7 @@ Download the current release from [here](https://github.com/CaptainDario/Automat
 
 ## Caution
 * NEVER rotate the motors by hand! You can and most probably will damage them.
-* Motors tend to overheat during extend usage. Since this is a cat toy, stop it if not in use to prevent it from overheating.
+* Motors tend to overheat during extend usage. Since this is a cat toy, stop it if it is not in use to prevent it from overheating.
 
 
 ## Project Ideas and next steps

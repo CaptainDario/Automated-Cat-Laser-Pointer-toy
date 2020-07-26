@@ -61,5 +61,5 @@ You can take a look at the planned tasks [here](https://github.com/CaptainDario/
 If you have ideas for new features or improvments feel free to open a request.
 
 
-##Developer notes
+## Developer notes
 This project uses [Circuit Daiagram](https://www.circuit-diagram.org/) for wiring images.

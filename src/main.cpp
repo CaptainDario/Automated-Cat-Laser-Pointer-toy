@@ -3,7 +3,11 @@
 //custom
 #include <stepper.h>
 #include <webserver.h>
+
 #include <credentials.h>
+
+String ap_ssid = "DaAppLab-cat-toy";
+
 
 
 //function pre defines
@@ -21,18 +25,6 @@ void setup() {
   //randomize values
   pinMode(A0, INPUT);
   randomSeed(analogRead(A0));
-
-  //set up wifi
-  WiFi.begin(SSID, PWD);
-  Serial.print("Connecting to "); Serial.print(SSID);
-  Serial.println(" ...");
-
-  int i = 0;
-  while (WiFi.status() != WL_CONNECTED) { // Wait for the Wi-Fi to connect
-    WiFi.hostname("DaAppLab cat toy");
-    delay(1000);
-    Serial.print(++i); Serial.print(' ');
-  }
   
   // Initialize SPIFFS
   if(!SPIFFS.begin()){
@@ -40,19 +32,31 @@ void setup() {
     return;
   }
 
-  Serial.println('\n');
-  Serial.println("Connection established!");  
-  Serial.print("IP address:\t");
-  Serial.println(WiFi.localIP()); 
+  if(try_connect_to_wifi()){
+    Serial.println("Connection established!");  
+    Serial.print("IP address:\t");
+    Serial.println(WiFi.localIP());
 
-  //start the webserver
+    //auto connect to this wifi at boot
+    WiFi.setAutoConnect(true);
+  }
+  else{
+    Serial.println("Connection failed setting up hotspot.");
+
+    WiFi.disconnect();
+    WiFi.mode(WIFI_AP);
+    WiFi.softAP(ap_ssid);
+  }
+
+  get_nearby_networks(); 
+
   setup_webserver();
 
   //set up stepper motors 
   setup_motor_bottom();
   setup_motor_top();
 
-  Serial.print("Setup finished");
+  Serial.println("Setup finished");
 }
 
 void loop() {
@@ -112,7 +116,7 @@ void setup_motor_top(){
 }
 
 
-
+//motor
 void configuration(){
   //bottom
   if(move_bottom_left){

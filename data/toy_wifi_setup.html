@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+    <link rel="stylesheet" type="text/css" href="style.css">
+<head>
+    <title>Laser pointer cat toy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="./live.js"></script>
+</head>
+
+
+<body>
+    <div class="topnav">
+        <a href="toy_control.html">Control</a>
+        <a href="toy_setup.html">Setup</a>
+        <a href="toy_update.html">Update</a>
+        <a class="active" href="toy_wifi_setup.html">WiFi</a>
+        <a href="toy_help.html">Help</a>
+    </div> 
+
+
+    <h1>Laser pointer cat toy - WiFi</h1>
+
+    <div>
+        <table class="networks" id="networks_table">
+            <tr>
+                <th><a>SSID</a></th>
+                <th>signal strength</th>
+            </tr>
+            %SSID%
+        </table>
+        <table>
+            <tr class="blank_row">
+                <td colspan="5"></td>
+            </tr>
+            
+            <form action="/connect" method="POST">
+                <tr>
+                    <td><input class="input" type="text" id="SSID" name="SSID" placeholder="my-SSID"></td>
+                    <td><input class="input" type="text" id="pwd" name="pwd" placeholder="my-password"></td>
+                </tr>
+                <tr class="blank_row">
+                    <td colspan="5"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input class="button" type="submit" value="connect"></td>
+                </tr>
+            </form>
+        </table>
+    </div>
+    
+</body>
+</html>

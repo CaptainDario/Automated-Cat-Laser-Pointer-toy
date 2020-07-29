@@ -1,6 +1,7 @@
 #include <ESP8266WiFi.h>
 #include <FS.h>
 #include <ESPAsyncWebServer.h>
+#include <wifi_credentials.h>
 
 AsyncWebServer server(80);
 
@@ -13,12 +14,31 @@ void setup_webserver(){
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
   });
-  
   // Route to load style.css file
   server.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/style.css", "text/css");
   });
 
+  //Navbar
+  server.on("/toy_control.html", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
+  });  
+  server.on("/toy_setup.html", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/toy_setup.html");
+  });
+  server.on("/toy_update.html", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/toy_update.html");
+  });
+  server.on("/toy_wifi_setup.html", HTTP_GET, [](AsyncWebServerRequest *request){
+    get_nearby_networks();
+    request->send(SPIFFS, "/toy_wifi_setup.html", String(), false, set_nearby_networks);
+  });
+  server.on("/toy_help.html", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/toy_help.html");
+  });  
+
+
+  //Controls
   // start rotation
   server.on("/on", HTTP_GET, [](AsyncWebServerRequest *request){
     disable_all_movement();
@@ -32,7 +52,21 @@ void setup_webserver(){
     enable_motor_for_movement();
     request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
   });
+  //LASERPOINTER ON/OFF
+  //ON
+  server.on("/laser_on", HTTP_GET, [](AsyncWebServerRequest *request){
+    digitalWrite(LASER_PIN, HIGH);
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
+  });
+  //OFF
+  server.on("/laser_off", HTTP_GET, [](AsyncWebServerRequest *request){
+    disable_all_movement();
+    digitalWrite(LASER_PIN, LOW);
+    request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
+  });
 
+
+  //Setup
   // move bottom
   server.on("/move_bottom_left", HTTP_GET, [](AsyncWebServerRequest *request){
     disable_all_movement();
@@ -87,19 +121,41 @@ void setup_webserver(){
     request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
   });
 
-  //LASERPOINTER ON/OFF
-  //ON
-  server.on("/laser_on", HTTP_GET, [](AsyncWebServerRequest *request){
-    digitalWrite(LASER_PIN, HIGH);
+
+  //WIFI CREDENTIALS
+  server.on("/connect", HTTP_POST, [](AsyncWebServerRequest *request){
+    String __SSID;
+    String __pwd;
+
+    Serial.println("/connect to new wifi");
+
+    if(request->hasParam("SSID", true)){
+      __SSID = request->getParam("SSID", true)->value();
+
+      Serial.println("SSID: " + __SSID);
+    }
+    if(request->hasParam("pwd", true)){
+      __pwd = request->getParam("pwd", true)->value();
+
+      Serial.println("pwd: " + __pwd);
+    }
+
+    //check that ssid and password are not empty
+    if(__SSID == "" || __pwd == ""){
+      Serial.println("Values not set");
+    }
+    else{
+      try_connect_to_wifi(__SSID, __pwd);
+    }
+    
+    //route to the Control page
     request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
   });
-  //OFF
-  server.on("/laser_off", HTTP_GET, [](AsyncWebServerRequest *request){
-    disable_all_movement();
-    digitalWrite(LASER_PIN, LOW);
-    request->send(SPIFFS, "/toy_control.html", String(), false, set_state);
-  });
+
 
   // Start server
   server.begin();
 }
+
+
+

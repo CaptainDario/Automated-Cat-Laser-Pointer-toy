@@ -1,0 +1,26 @@
+﻿/*LANDING-ZONE CANVAS*/
+Canvas {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    border-width: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1000;
+}
+/*DaAppLab Logo over the lading-zone Cavnas*/
+.aboutFlex {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aboutFlex > * {
+    margin: 5px;
+}

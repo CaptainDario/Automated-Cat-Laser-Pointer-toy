@@ -66,6 +66,7 @@ bool try_connect_to_wifi(String ssid="", String pwd=""){
   bool ret = false;
   
   WiFi.mode(WIFI_STA);
+  WiFi.disconnect();
 
   if(ssid != "" && pwd != ""){
     WiFi.begin(ssid, pwd);

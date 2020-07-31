@@ -4,9 +4,8 @@
 #include <stepper.h>
 #include <webserver.h>
 
-#include <credentials.h>
 
-String ap_ssid = "DaAppLab-cat-toy";
+String ap_ssid = "DaPetToy";
 
 
 
@@ -17,10 +16,10 @@ void configuration();
 
 void setup() {
   Serial.begin(460800);
-
+  Serial.println("test");
   //disable laser at boot
   pinMode(D8, OUTPUT);
-  digitalWrite(D8, LOW);
+  //digitalWrite(D8, LOW);
 
   //randomize values
   pinMode(A0, INPUT);

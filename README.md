@@ -1,4 +1,5 @@
-Automated cat-Laser-Pointer toy
+"DaPetToy" is an automated pet-Laser-Pointer toy.
+It randomly moves a laser pointer on two axes so that a pet could chase it.
 
 I made this for the 2020 ["Pets Speed Challenge"]((https://www.instructables.com/id/An-Automated-Cat-laser-pointer-toy/) ) on instructables (The instructable has more images for the setup of the hardware).
 See it in action by clicking on the image below. <br>

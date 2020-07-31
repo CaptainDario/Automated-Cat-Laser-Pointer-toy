@@ -1,8 +1,17 @@
+:root{
+  --bg-color   : rgb(0, 0, 0);
+  --text-color : rgb(185, 185, 185);
+  --hover-color: rgb(100, 100, 100);
+}
+
 html {
     font-family: Helvetica;
     display: inline-block;
     margin: 0px auto;
+    font-size: large;
     text-align: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 h1{
     color: #004109;
@@ -60,7 +69,7 @@ td{
     cursor: pointer;
 }
 .button:hover{
-  background-color: #009c15;
+  background-color: rgb(0, 175, 44);
 }
 .button2 {
     background-color: #b80c00;
@@ -68,21 +77,6 @@ td{
 }
 .button2:hover{
   background-color: #ff1100;
-}
-.refresh {
-    background-color: #007710;
-    border: 2px;
-    border-style: solid;
-    border-radius: 2px;
-    border-color: #004109;
-    color: white;
-    padding: 5px 5px;
-    position: relative;
-    left: 0;
-    top: 0;
-    background-image: url(refresh-white-48dp.svg);
-    background-size: 100%;
-    background-repeat: no-repeat;
 }
 
 .blank_row
@@ -95,23 +89,34 @@ td{
 /*Nav-bar*/
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background-color: rgb(0, 0, 0);
   overflow: hidden;
+  margin: 0;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
   float: left;
+  display: flex;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 14px;
   text-decoration: none;
-  font-size: 17px;
+}
+
+.topnav a.navbaricon {
+  padding: 0px;
+  display: flex;
+}
+
+.icon{
+  display: flex;
+  height: 46px;
 }
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #009514;
   color: black;
 }
 
@@ -119,4 +124,16 @@ td{
 .topnav a.active {
   background-color: #009514;
   color: white;
+}
+
+
+/* DaAppLab links */
+.daapplab_icons_flex{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+.daapplab_icons{
+  height: 75px;
+  padding: 5px;
 }

@@ -5,13 +5,12 @@ I made this for the 2020 ["Pets Speed Challenge"]((https://www.instructables.com
 See it in action by clicking on the image below. <br>
 [![See it in action](https://img.youtube.com/vi/vp5igMt3IM0/0.jpg)](https://www.youtube.com/watch?v=vp5igMt3IM0)
 
-Download the current release from [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/releases).
 
 ## Instructions
 
 ## Software
 Currently you have to build the firmware from source. This is necessary because you have to enter you wifi credentials.
-Get the latest release from [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/releases/tag/v1.0). Compile it and falsh it to your D1 mini.
+Get the latest release from [here](https://github.com/CaptainDario/DaPetToy/releases/tag/v1.0). Compile it and falsh it to your D1 mini.
 *note:*
 *I hope to provide a ready made image in the future where you can enter the credentials per webserver.*
 
@@ -33,14 +32,14 @@ You need following hardware for this project:
 (All those components are just examples)
 
 First you need to print the mounts for the motors. To do this print
-[these files](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/tree/master/models).
+[these files](https://github.com/CaptainDario/DaPetToy/tree/master/models).
 *I will be doing a model for the base case in the future too. But for now follow the instructions below...*
 
 A little bit harder will be the making of the base case. I made the case out of wood to provide more structural rigidity (and I think it looks nicer too). The base case has one large hole on the top and a small one on the side. The large hole is for the stepper motor and the small one for the power input. Make sure that the motor-hole is large enough to fit the cables of two stepper motors and also the two wires of the laser pointer (they need space to move freely as the wires will move due to the rotation).
 
 Now connect the components as shown in this image:
 
-![circuit.png](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/blob/master/instructions/wiring/circuit.png)
+![circuit.png](https://github.com/CaptainDario/DaPetToy/blob/master/instructions/wiring/circuit.png)
 
 Now it is time to assemble it. First put the laser pointer in the mount and use the M4x10 screw and nut to fix it in place.
 Next up is the power jack. Put it in the small hole and fasten it with its nut.
@@ -58,7 +57,7 @@ Finally put the motors in their holes and also stick them together. If they do n
 
 
 ## Project Ideas and next steps
-You can take a look at the planned tasks [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/projects/1).
+You can take a look at the planned tasks [here](https://github.com/CaptainDario/DaPetToy/projects/1).
 If you have ideas for new features or improvments feel free to open a request.
 
 

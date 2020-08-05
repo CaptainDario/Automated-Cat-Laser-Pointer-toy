@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DaPetToy - about</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+        <link rel="icon" href="data:,">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="./include_html.js"></script>
+    </head>
+    <body>
+        <div include-html="header.html"></div>
+        <!--Die Elemente fuer die dynamische landing Zone-->
+        <canvas id="HeaderBackGround"></canvas>
+        <script src="./quad.js"></script>
+        <script src="./BackGroundEffects.js"></script>
+        
+        <div class="aboutFlex">
+            <img src="./DaAppLab_Text.png" alt="DaAppLab" />
+            <span>
+            </span>
+            <span style="background-color: black; padding: 5px; border-radius: 5px;">
+                DaPetToy got developed for the "Pets challenge" from instructables.
+            </span>
+            <span style="background-color: black; padding: 5px; border-radius: 5px;">
+                It combines motors and a laser pointer to have some automated entertainment for your little friends.
+            </span>
+            <span>
+            </span>
+            <span>
+            </span>
+            <span>
+            </span>
+            <span style="background-color: black; padding: 5px; border-radius: 5px;">
+                You can find more from DaApplab here:
+            </span>
+            <span>
+            </span>
+            <div class="daapplab_icons_flex">
+                <div>
+                    <a href="https://www.youtube.com/channel/UCQrQnnbsO0hCCMSGMPemPGw"><img class="daapplab_icons" src="youtube.svg"></a>
+                </div>
+                <div>
+                    <a href="https://www.instructables.com/member/daapplab/"><img class="daapplab_icons" src="instructables.jpg"></a>
+                </div>
+                <div>
+                    <a href="https://play.google.com/store/apps/developer?id=DaAppLab&hl=en"><img class="daapplab_icons" src="google-play.svg"></a>
+                </div>
+                <div>
+                    <a href="https://www.thingiverse.com/daapplab/designs"><img class="daapplab_icons" src="thingiverse.png"></a>
+                </div>
+                <div>
+                    <a href="https://github.com/CaptainDario"><img class="daapplab_icons" src="github.png"></a>
+                </div>
+            </div>
+        </div>
+        <div include-html="footer.html"></div>
+    </body>
+
+    <!--Load the footer and header-->
+    <script>includeHTML();</script>
+</html>

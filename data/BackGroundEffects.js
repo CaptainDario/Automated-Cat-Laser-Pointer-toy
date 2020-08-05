@@ -127,9 +127,6 @@ window.onload = init();
 window.onresize = function (event) { init(); };
 
 //Die Mausposition bestimmen UND damit die Geschwindigkeit der 0/1 setzen//////////////////////////////
-var IE = document.all ? true : false;
-
-if (!IE) document.captureEvents(Event.MOUSEMOVE);
 document.onmousemove = getMouseXY;
 
 var tempX = 0;
@@ -137,23 +134,11 @@ var tempY = 0;
 
 function getMouseXY(e)
 {
-
-    if (IE) {
-        speed = event.clientX + document.body.scrollLeft;
-        speed = speed - width / 2;
-        if (speed < 0)
-        {
-            speed *= -1;
-        }
-    }
-    else
+    speed = e.pageX;
+    speed = speed - width / 2;
+    if (speed < 0)
     {
-        speed = e.pageX;
-        speed = speed - width / 2;
-        if (speed < 0)
-        {
-            speed *= -1;
-        }
+        speed *= -1;
     }
 
     return true;

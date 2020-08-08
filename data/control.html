@@ -11,7 +11,6 @@
     <body>
         <div include-html="header.html"></div>
 
-        <h1>Laser pointer cat toy - Control</h1>
         <p>
             <label>
                 state: <strong> %STATE%</strong>
@@ -23,16 +22,15 @@
                 <td><a href="/on"><button class="button">ON</button></a></td>
                 <td><a href="/off"><button class="button button2">OFF</button></a></td>
             </tr>
-        
-            <tr class="blank_row">
-                <td colspan="3"></td>
-            </tr>
-
         </table>
 
-        <div include-html="footer.html"></div>
     </body>
     
+    <footer class="footer">
+        <div include-html="footer.html"></div>
+    </footer>
+
     <!--Load the footer and header-->
     <script>includeHTML();</script>
+
 </html>

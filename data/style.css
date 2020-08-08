@@ -79,13 +79,6 @@ td{
   background-color: #ff1100;
 }
 
-.blank_row
-{
-    height: 30px !important; /* overwrites any other rules */
-    background-color: #FFFFFF;
-}
-
-
 /*Nav-bar*/
 /* Add a black background color to the top navigation */
 .topnav {
@@ -104,14 +97,8 @@ td{
   text-decoration: none;
 }
 
-.topnav a.navbaricon {
-  padding: 0px;
-  display: flex;
-}
-
 .icon{
   display: flex;
-  height: 46px;
 }
 
 /* Change the color of links on hover */
@@ -163,4 +150,12 @@ Canvas {
 
 .aboutFlex > * {
     margin: 5px;
+}
+
+
+
+/* FOOTER */
+.footer{
+  position: absolute;
+  top: 100vh - 50px;
 }

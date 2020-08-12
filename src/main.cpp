@@ -5,7 +5,6 @@
 #include <webserver.h>
 
 
-String ap_ssid = "DaPetToy";
 
 
 
@@ -16,10 +15,10 @@ void configuration();
 
 void setup() {
   Serial.begin(460800);
-  Serial.println("test");
   //disable laser at boot
   pinMode(D8, OUTPUT);
-  //digitalWrite(D8, LOW);
+
+  WiFi.setAutoConnect(true);
 
   //randomize values
   pinMode(A0, INPUT);
@@ -31,21 +30,7 @@ void setup() {
     return;
   }
 
-  if(try_connect_to_wifi()){
-    Serial.println("Connection established!");  
-    Serial.print("IP address:\t");
-    Serial.println(WiFi.localIP());
-
-    //auto connect to this wifi at boot
-    WiFi.setAutoConnect(true);
-  }
-  else{
-    Serial.println("Connection failed setting up hotspot.");
-
-    WiFi.disconnect();
-    WiFi.mode(WIFI_AP);
-    WiFi.softAP(ap_ssid);
-  }
+  try_connect_to_wifi();
 
   get_nearby_networks(); 
 
@@ -97,6 +82,8 @@ void loop() {
   set_limits();
   configuration();
   
+  try_connect_to_wifi();
+    
 }
 
 void setup_motor_bottom(){

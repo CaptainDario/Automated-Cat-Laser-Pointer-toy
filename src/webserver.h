@@ -138,7 +138,7 @@ void setup_webserver(){
       Serial.println("Values not set");
     }
     else{
-      try_connect_to_wifi(__SSID, __pwd);
+      set_new_wifi(__SSID, __pwd);
     }
     
     //route to the Control page

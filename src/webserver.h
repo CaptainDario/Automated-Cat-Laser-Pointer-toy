@@ -5,11 +5,14 @@
 
 AsyncWebServer server(80);
 
+/**
+ * Initialize the webserver.
+ * Defines how to handle all request to the webserver.
+ */
+void setup_webserver();
 
  
 void setup_webserver(){
-
-
   // Route for root / web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/control.html", String(), false, set_state);
@@ -41,7 +44,7 @@ void setup_webserver(){
   });  
 
 
-  //Controls
+  // Toy Controls
   // start rotation
   server.on("/on", HTTP_GET, [](AsyncWebServerRequest *request){
     digitalWrite(LASER_PIN, HIGH);
@@ -59,7 +62,7 @@ void setup_webserver(){
   });
 
 
-  //Setup
+  // Setup/Initialization 
   // move bottom
   server.on("/move_bottom_left", HTTP_GET, [](AsyncWebServerRequest *request){
     disable_all_movement();
@@ -115,7 +118,7 @@ void setup_webserver(){
   });
 
 
-  //WIFI CREDENTIALS
+  //WIFI Setup requests
   server.on("/connect", HTTP_POST, [](AsyncWebServerRequest *request){
     String __SSID;
     String __pwd;
@@ -155,7 +158,7 @@ void setup_webserver(){
   });
 
 
-  //JS
+  //Java script requests
   server.on("/include_html.js", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/include_html.js");
   });
@@ -170,7 +173,7 @@ void setup_webserver(){
   });
 
 
-  //IMGS
+  //Image requests
   //PNG
   server.on("/logo.png", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/logo.png");

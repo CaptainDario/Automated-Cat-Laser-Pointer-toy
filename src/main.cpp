@@ -5,25 +5,36 @@
 #include <webserver.h>
 
 
-
-
-
-//function pre defines
+/**
+ set the limits the user entered in the UI
+*/
 void set_limits();
+/**
+ Configure the motors to run ind
+*/
 void configuration();
+/**
+ Initialize stepper 1 (bottom)
+*/
+void setup_motor_bottom();
+/**
+ Initialize stepper 2 (top/laser pointer)
+*/
+void setup_motor_top();
+
+
 
 
 void setup() {
   Serial.begin(460800);
-  //disable laser at boot
-  pinMode(D8, OUTPUT);
-
   WiFi.setAutoConnect(true);
 
+  //disable laser at boot
+  pinMode(D8, OUTPUT);
   //randomize values
   pinMode(A0, INPUT);
   randomSeed(analogRead(A0));
-  
+
   // Initialize SPIFFS
   if(!SPIFFS.begin()){
     Serial.println("An Error has occurred while mounting SPIFFS");
@@ -31,12 +42,10 @@ void setup() {
   }
 
   try_connect_to_wifi();
-
   get_nearby_networks(); 
-
   setup_webserver();
 
-  //set up stepper motors 
+  //initialize stepper motors 
   setup_motor_bottom();
   setup_motor_top();
 
@@ -47,6 +56,7 @@ void loop() {
   //check if motors need to be enabled
   enable_motor_for_movement();
 
+  //rotate the motors randomly
   if(rotating){
     if (stepper_bottom.distanceToGo() == 0)
     {
@@ -87,22 +97,17 @@ void loop() {
 }
 
 void setup_motor_bottom(){
-  //init stepper 1 (bottom)
   stepper_bottom.setMaxSpeed(2000);
   stepper_bottom.setAcceleration(2000);
   stepper_bottom.setSpeed(2000);
 }
 
 void setup_motor_top(){
-  //init stepper 2 (top/laser pointer)
   stepper_top.setMaxSpeed(2000);
   stepper_top.setAcceleration(2000);
   stepper_top.setSpeed(2000);
-
 }
 
-
-//motor
 void configuration(){
   //bottom
   if(move_bottom_left){

@@ -1,7 +1,7 @@
 ####################################################
 # This script should be run in:
 #   .\laser_pointer_toy\webserver
-# otherwise it will fail or not work correctly.
+# otherwise it will most probably fail or not work correctly.
 ####################################################
 
 

@@ -4,16 +4,32 @@
 #include <EEPROM.h>
 
 
+//the name of the Access Point if no connection to a wifi network is possible
 String ap_ssid = "DaPetToy";
-
+//if the user has entered a new SSID and password
 bool new_wifi = true;
 String new_SSID = "";
 String new_pwd = "";
-
-
+//all nearby WiFi networks and their signal strength
 std::vector<std::vector<String>> networks = {};
-std::vector<String> rssi_s = {};
-std::vector<String> ssid_s = {};
+
+
+/**
+  * Find all nearby wifi signals and save the SSID's and their signal strength in the 'networks' vector
+  */
+void get_nearby_networks();
+/**
+  * writes the found networks from the last scan into the "WiFI"-webpage
+  */
+String set_nearby_networks(const String& var);
+/**
+  * Set the values the user entered for connecting to a new network.
+  */
+void set_new_wifi(String __SSID, String __pwd);
+/**
+  * Tries to connect to connect to the newly given network.
+  */
+bool try_connect_to_wifi();
 
 
 void get_nearby_networks(){
@@ -24,18 +40,16 @@ void get_nearby_networks(){
   }
   else if(n){
 
-    //rssi_s.clear();
-    //ssid_s.clear();
     networks.clear();
 
+    //add all nearby networks to the vector of networks
     for (int i = 0; i < n; ++i){
-        //rssi_s.push_back(String(WiFi.RSSI(i)));
-        //ssid_s.push_back(String(WiFi.SSID(i)));
         networks.push_back(std::vector<String>{String(WiFi.SSID(i)),
                                                 String(WiFi.RSSI(i))});
         //Serial.println("RSSI: " + networks[i][1] + "\tSSID: " + networks[i][0]);
     }
 
+    //delete the scan
     WiFi.scanDelete();
     if(WiFi.scanComplete() == -2){
         WiFi.scanNetworks(true);
@@ -43,12 +57,7 @@ void get_nearby_networks(){
   }
 }
 
-/*
-// writes the found networks from the last scan into the "WiFI"-webpage
-*/
 String set_nearby_networks(const String& var){
-
-  //Serial.println(":" + var + ":");
 
   String ret = String();
 
@@ -65,29 +74,21 @@ String set_nearby_networks(const String& var){
   return ret; 
 }
 
-
-/*
-//
-*/
 void set_new_wifi(String __SSID, String __pwd){
   new_wifi = true;
   new_pwd = __pwd;
   new_SSID = __SSID; 
 }
 
-/*
-// Tries to connect to the last saved network when no arguments are given
-//
-// If *both* parameters are set ESP will try to connect to this network.
-*/
 bool try_connect_to_wifi(){
   
-  bool ret = false;
+  bool connected = false;
   
   if(new_wifi){
 
     WiFi.mode(WIFI_STA);
 
+    //if a new SSID and password was set, try to connect to it
     if(new_SSID != "" && new_pwd != ""){
       WiFi.begin(new_SSID, new_pwd);
     }
@@ -104,21 +105,22 @@ bool try_connect_to_wifi(){
       Serial.print(++i); Serial.print("... ");
     }
 
+    //a connection was established
     if(WiFi.status() == WL_CONNECTED){
-      ret = true;
+      connected = true;
 
       Serial.print("IP address:\t");
       Serial.println(WiFi.localIP());
 
-
       Serial.println('\n');
     }
 
+    //reset the data entered by the user
     new_pwd = "";
     new_SSID = "";
     new_wifi = false;
 
-    if(ret){
+    if(connected){
       Serial.println("Connection established!");  
     }
     else{
@@ -128,5 +130,5 @@ bool try_connect_to_wifi(){
     }
   }
 
-  return ret;
+  return connected;
 }

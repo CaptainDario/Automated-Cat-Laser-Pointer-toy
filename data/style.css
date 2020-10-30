@@ -112,7 +112,20 @@ td{
   color: white;
 }
 
-/* the daapplab icon to the about page        calc((var(--top) * 2))*/
+/*The DaAppLab writing in the center of the moving 0's and 1's*/
+@font-face{
+  font-family: chlorinar;
+  src: url(CHLORINR.TTF);
+}
+.daapplab_writing{
+  font-family: chlorinar;
+  font-size: 150px;
+  color: rgb(106, 0, 199);
+  letter-spacing: 7px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+/* the daapplab icon to the about page*/
 .about_icon{
   height: calc(20px + calc((var(--nav-bar-padding) * 2)));
   padding: 0px;

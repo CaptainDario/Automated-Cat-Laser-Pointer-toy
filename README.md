@@ -48,8 +48,8 @@ You need following hardware for this project:
 * 3D printer
 (All those components are just examples)
 
-First you need to print the mounts for the motors. To do this print
-[these files](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/tree/master/models).
+First you need to print the mounts for the motors. 
+When you downloaded the newest release it will contain a folder called 'models' which will contain the necessary .stl files.
 
 A little bit harder will be the making of the base case. I made the case out of wood to provide more structural rigidity (and I think it looks nicer too). The base case has one large hole on the top and a small one on the side. The large hole is for the stepper motor and the small one for the power input. Make sure that the motor-hole is large enough to fit the cables of two stepper motors and also the two wires of the laser pointer (they need space to move freely as the wires will move due to the rotation).
 

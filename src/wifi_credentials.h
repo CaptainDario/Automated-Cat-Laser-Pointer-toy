@@ -2,10 +2,9 @@
 #include <ESP8266WiFi.h>
 #include <vector>
 #include <EEPROM.h>
+#include <about.h>
 
 
-//the name of the Access Point if no connection to a wifi network is possible
-String ap_ssid = "DaPetToy";
 //if the user has entered a new SSID and password
 bool new_wifi = true;
 String new_SSID = "";
@@ -100,7 +99,7 @@ bool try_connect_to_wifi(){
     //try to connect to wifi for 10 sec
     int i = 0;
     while (WiFi.status() != WL_CONNECTED && i < 10) {
-      WiFi.hostname("DaAppLab-cat-toy");
+      WiFi.hostname(wifi_name);
       delay(1000);
       Serial.print(++i); Serial.print("... ");
     }
@@ -125,7 +124,7 @@ bool try_connect_to_wifi(){
     }
     else{
       Serial.println("Connection failed setting up hotspot.");
-      WiFi.mode(WIFI_AP);
+      WiFi.mode(WIFI_AP_STA);
       WiFi.softAP(ap_ssid);
     }
   }

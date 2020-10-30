@@ -170,10 +170,16 @@ Canvas {
     margin: 5px;
 }
 
-
+body{
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+}
 
 /* FOOTER */
 .footer{
-  margin: auto;
-  width: 50%;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  height: 50px;
 }

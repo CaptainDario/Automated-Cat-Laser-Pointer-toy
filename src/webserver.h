@@ -13,12 +13,24 @@ void setup_webserver();
 
  
 void setup_webserver(){
+  Serial.println(WiFi.getMode());
   // Route for root / web page
   server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/control.html", String(), false, set_state);
+    //show the control page if in STA mode as first page
+    if(WiFi.getMode() == WIFI_STA){
+      Serial.println("WiFi STA");
+      request->send(SPIFFS, "/control.html", String(), false, set_state);
+    }
+    //show the wifi setup page if in AP mode as first page
+    if(WiFi.getMode() == WIFI_AP_STA){
+      Serial.println("WiFi AP");
+      get_nearby_networks();
+      request->send(SPIFFS, "/wifi_setup.html", String(), false, set_nearby_networks);
+    }
   });
   // Route to load style.css file
   server.on("/style.css", HTTP_GET, [](AsyncWebServerRequest *request){
+    get_nearby_networks();
     request->send(SPIFFS, "/style.css", "text/css");
   });
 

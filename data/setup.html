@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DaPetToy - setup</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+        <link rel="icon" href="data:,">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="./include_html.js"></script>
+    </head>
+
+
+    <body>
+        <div include-html="header.html"></div>
+
+        <table>
+            <tr>
+                <td><label>Move motor (bottom):</label></td>
+                <td><a href="/move_bottom_left"><button class="button">LEFT</button></a></td>
+                <td><a href="/move_bottom_right"><button class="button button2">RIGHT</button></a></td>
+            </tr>
+            <tr>
+                <td><label>Set boundaries (bottom):</label></td>
+                <td><a href="/set_bottom_minimum"><button class="button">MINIMUM</button></a></td>
+                <td><a href="/set_bottom_maximum"><button class="button button2">MAXIMUM</button></a></td>
+            </tr>
+            <tr>
+                <td>Move motor (laser pointer):</td>
+                <td><a href="/move_top_left"><button class="button">LEFT</button></a></td>
+                <td><a href="/move_top_right"><button class="button button2">RIGHT</button></a></td>
+            </tr>
+            <tr>
+                <td>Set boundaries (laser pointer):</td>
+                <td><a href="/set_top_minimum"><button class="button">MINIMUM</button></a></td>
+                <td><a href="/set_top_maximum"><button class="button button2">MAXIMUM</button></a></td>
+            </tr>    
+        </table>
+
+    </body>
+    
+    <footer class="footer">
+        <div include-html="footer.html"></div>
+    </footer>
+
+    <!--Load the footer and header-->
+    <script>includeHTML();</script>
+</html>

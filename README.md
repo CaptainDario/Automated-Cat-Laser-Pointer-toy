@@ -1,18 +1,34 @@
 Automated cat-Laser-Pointer toy
 
 I made this for the 2020 ["Pets Speed Challenge"]((https://www.instructables.com/id/An-Automated-Cat-laser-pointer-toy/) ) on instructables (The instructable has more images for the setup of the hardware).
-See it in action by clicking on the image below. <br>
+See it in action by clicking on the image below. </br>
 [![See it in action](https://img.youtube.com/vi/vp5igMt3IM0/0.jpg)](https://www.youtube.com/watch?v=vp5igMt3IM0)
 
-Download the current release from [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/releases).
 
 ## Instructions
 
-## Software
-Currently you have to build the firmware from source. This is necessary because you have to enter you wifi credentials.
-Get the latest release from [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/releases/tag/v1.0). Compile it and falsh it to your D1 mini.
-*note:*
-*I hope to provide a ready made image in the future where you can enter the credentials per webserver.*
+## Flashing the software
+You can compile the software from source and flash the data and firmware this way.
+But here I will describe how to flash the software via the ready-made images provided [here.](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/releases) </br>
+First you will need a [python install](https://www.python.org) with the [esptool](https://github.com/espressif/esptool) module installed.
+```
+path\to\your\python.exe -m pip install esptool
+```
+Now you are ready to write the firmware and data image:
+```
+path\to\your\python.exe -m esptool -b 921600 write_flash 0x0 firmware.bin 0x00300000 spiffs.bin
+```
+
+**Caution:** </br>
+Depending on the esp board you are using the offset where to write the 'spiffs.bin' can be different!
+
+Now you can power up your esp.
+After some time it should open a access point called 'DaPetToy'.
+The webserver IP address is the standard esp webserver address: </br>
+```192.168.4.1``` </br>
+Enter it in your browser and you will be greeted with a screen to enter you WiFi credentials.
+The ESP will reboot after submission of the credentials.
+If everything is correct you can now look up the ip address of your ESP and connect to it from your home network.
 
 But for now you have to do the following:You need to rename the file “REMOVE_credentials.h” in the “src” folder to “credentials.h”. And replace “YOUR SSID” and “YOUR PWD” in this file with your wifi SSID and password.
 After completing this first step you have to upload the file system to the esp and than compile and upload the software.
@@ -33,13 +49,12 @@ You need following hardware for this project:
 
 First you need to print the mounts for the motors. To do this print
 [these files](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/tree/master/models).
-*I will be doing a model for the base case in the future too. But for now follow the instructions below...*
 
 A little bit harder will be the making of the base case. I made the case out of wood to provide more structural rigidity (and I think it looks nicer too). The base case has one large hole on the top and a small one on the side. The large hole is for the stepper motor and the small one for the power input. Make sure that the motor-hole is large enough to fit the cables of two stepper motors and also the two wires of the laser pointer (they need space to move freely as the wires will move due to the rotation).
 
 Now connect the components as shown in this image:
 
-![circuit.png](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/blob/master/instructions/wiring/circuit.png)
+![circuit.png](./instructions/wiring/circuit.png)
 
 Now it is time to assemble it. First put the laser pointer in the mount and use the M4x10 screw and nut to fix it in place.
 Next up is the power jack. Put it in the small hole and fasten it with its nut.
@@ -58,7 +73,7 @@ Finally put the motors in their holes and also stick them together. If they do n
 
 ## Project Ideas and next steps
 You can take a look at the planned tasks [here](https://github.com/CaptainDario/Automated-Cat-Laser-Pointer-toy/projects/1).
-If you have ideas for new features or improvments feel free to open a request.
+If you have ideas for new features or improvements feel free to open a request.
 
 
 ## Developer notes

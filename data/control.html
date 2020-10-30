@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DaPetToy - control</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+        <link rel="icon" href="data:,">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="./include_html.js"></script>
+    </head>
+
+    <body>
+        <div include-html="header.html"></div>
+
+        <p>
+            <label>
+                state: <strong> %STATE%</strong>
+            </label>
+        </p>
+
+        <table>
+            <tr>
+                <td><a href="/on"><button class="button">ON</button></a></td>
+                <td><a href="/off"><button class="button button2">OFF</button></a></td>
+            </tr>
+        </table>
+
+    </body>
+    
+    <footer class="footer">
+        <div include-html="footer.html"></div>
+    </footer>
+
+    <!--Load the footer and header-->
+    <script>includeHTML();</script>
+
+</html>

@@ -1,19 +1,51 @@
+:root{
+  --bg-color        : rgb(0, 0, 0);
+  --text-color      : rgb(185, 185, 185);
+  --hover-color     : rgb(100, 100, 100);
+  --nav-bar-padding : 14px;
+}
+
 html {
     font-family: Helvetica;
     display: inline-block;
     margin: 0px auto;
+    font-size: large;
     text-align: center;
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 h1{
-    color: #0F3376;
+    color: #004109;
     padding: 2vh;
 }
 p{
     font-size: 1.5rem;
 }
-.button {
+table{
+  width: 100%;
+}
+.networks{
+  text-align: center;
+  align-items: center;
+}
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+.networks tr:nth-child(even){
+  background-color: #e0dddd;
+}
+.networks tr:hover{
+  background-color: #f5f5f5;
+}
+td{
+  text-align: center;
+  align-items: center;
+  width: 50%;
+}
+.input {
     display: inline-block;
-    background-color: #008CBA;
+    background-color: #007710;
     border: none;
     border-radius: 4px;
     color: white;
@@ -23,12 +55,131 @@ p{
     margin: 2px;
     cursor: pointer;
 }
+.button {
+    display: inline-block;
+    background-color: #007710;
+    border: 5px;
+    border-style: solid;
+    border-radius: 4px;
+    border-color: #004109;
+    color: white;
+    padding: 16px 40px;
+    text-decoration: none;
+    font-size: 30px;
+    margin: 2px;
+    cursor: pointer;
+}
+.button:hover{
+  background-color: rgb(0, 175, 44);
+}
 .button2 {
-    background-color: #f44336;
+    background-color: #b80c00;
+    border-color: #8b0900;
+}
+.button2:hover{
+  background-color: #ff1100;
 }
 
-.blank_row
-{
-    height: 30px !important; /* overwrites any other rules */
-    background-color: #FFFFFF;
+/*Nav-bar*/
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: rgb(0, 0, 0);
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: flex;
+  color: #f2f2f2;
+  text-align: center;
+  height: 20px;
+  padding: var(--nav-bar-padding) var(--nav-bar-padding);
+  text-decoration: none;
+}
+
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #009514;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #009514;
+  color: white;
+}
+
+/*The DaAppLab writing in the center of the moving 0's and 1's*/
+@font-face{
+  font-family: chlorinar;
+  src: url(CHLORINR.TTF);
+}
+.daapplab_writing{
+  font-family: chlorinar;
+  font-size: 150px;
+  color: rgb(106, 0, 199);
+  letter-spacing: 7px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+/* the daapplab icon to the about page*/
+.about_icon{
+  height: calc(20px + calc((var(--nav-bar-padding) * 2)));
+  padding: 0px;
+  margin: -14px/*calc(var(--nav-bar-padding) * -1)*/;
+}
+
+/* DaAppLab links */
+.daapplab_links_flex{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+.daapplab_links{
+  height: 75px;
+  padding: 5px;
+}
+
+/*LANDING-ZONE CANVAS*/
+Canvas {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    border-width: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1000;
+}
+/*DaAppLab Logo over the lading-zone Cavnas*/
+.aboutFlex {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.aboutFlex > * {
+    margin: 5px;
+}
+
+body{
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+}
+
+/* FOOTER */
+.footer{
+  bottom: 0;
+  width: 100%;
+  position: absolute;
+  height: 50px;
 }

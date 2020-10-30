@@ -5,14 +5,12 @@
 AccelStepper stepper_bottom = AccelStepper(8, stepper_bottom_pin_1, stepper_bottom_pin_2,
                                               stepper_bottom_pin_3, stepper_bottom_pin_4);
 int stepper_bottom_max = 1000;
-void setup_motor_bottom();
 int min_delay_before_new_pos_bottom = 50;
 
 //motor top
 AccelStepper stepper_top = AccelStepper(8, stepper_top_pin_1, stepper_top_pin_2, 
                                             stepper_top_pin_3, stepper_top_pin_4);
 int stepper_top_max = 1000;
-void setup_motor_top();
 int min_delay_before_new_pos_top = 50;
 
 
@@ -29,13 +27,26 @@ bool set_bottom_maximum = false;
 bool set_top_minimum = false;
 bool set_top_maximum = false;
 
-
 String current_state = String();
 
 
 /*
 Set the string on the webserver which indicates indicates the current state.
 */
+String set_state(const String& var);
+/*
+Disbles all movement instructions to the motors.
+This should help prevent them from overheating.
+*/
+void disable_all_movement();
+/*
+Enables the motors only when a movement is requried.
+This should help prevent them from overheating.
+*/
+void enable_motor_for_movement();
+
+
+
 String set_state(const String& var){
 
   current_state = String();
@@ -59,10 +70,6 @@ String set_state(const String& var){
   return current_state;
 }
 
-/*
-Disbles all movement instructions to the motors.
-This should help prevent them from overheating.
-*/
 void disable_all_movement(){
 
   rotating = false;
@@ -75,10 +82,6 @@ void disable_all_movement(){
   stepper_bottom.disableOutputs();
 }
 
-/*
-Enables the motors only when a movement is requried.
-This should help prevent them from overheating.
-*/
 void enable_motor_for_movement(){
 
   if(move_bottom_right || move_bottom_left)

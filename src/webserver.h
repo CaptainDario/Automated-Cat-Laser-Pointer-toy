@@ -145,7 +145,7 @@ void setup_webserver(){
     if(request->hasParam("pwd", true)){
       __pwd = request->getParam("pwd", true)->value();
 
-      Serial.println("pwd: " + __pwd);
+      //Serial.println("pwd: " + __pwd);
     }
 
     //check that ssid and password are not empty

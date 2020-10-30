@@ -1,7 +1,8 @@
 :root{
-  --bg-color   : rgb(0, 0, 0);
-  --text-color : rgb(185, 185, 185);
-  --hover-color: rgb(100, 100, 100);
+  --bg-color        : rgb(0, 0, 0);
+  --text-color      : rgb(185, 185, 185);
+  --hover-color     : rgb(100, 100, 100);
+  --nav-bar-padding : 14px;
 }
 
 html {
@@ -93,13 +94,11 @@ td{
   display: flex;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 14px;
+  height: 20px;
+  padding: var(--nav-bar-padding) var(--nav-bar-padding);
   text-decoration: none;
 }
 
-.icon{
-  display: flex;
-}
 
 /* Change the color of links on hover */
 .topnav a:hover {
@@ -113,14 +112,20 @@ td{
   color: white;
 }
 
+/* the daapplab icon to the about page        calc((var(--top) * 2))*/
+.about_icon{
+  height: calc(20px + calc((var(--nav-bar-padding) * 2)));
+  padding: 0px;
+  margin: -14px/*calc(var(--nav-bar-padding) * -1)*/;
+}
 
 /* DaAppLab links */
-.daapplab_icons_flex{
+.daapplab_links_flex{
   display: flex;
   flex-flow: row;
   justify-content: center;
 }
-.daapplab_icons{
+.daapplab_links{
   height: 75px;
   padding: 5px;
 }
@@ -156,6 +161,6 @@ Canvas {
 
 /* FOOTER */
 .footer{
-  position: absolute;
-  top: 100vh - 50px;
+  margin: auto;
+  width: 50%;
 }
